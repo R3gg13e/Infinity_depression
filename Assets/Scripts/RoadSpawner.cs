@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class RoadSpawner : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class RoadSpawner : MonoBehaviour
     [SerializeField] RoadPiece roadPiece;
     [SerializeField] GameObject building;
     [SerializeField] GameObject tree;
+    [SerializeField] Obstacle car;
    
     RoadPiece leadingPiece; // Remember the last piece created
 
@@ -18,6 +20,28 @@ public class RoadSpawner : MonoBehaviour
         //{
         //    backPiece = SpawnEndAt(backPiece.StartPos.position);
         //}
+
+        StartCoroutine(SpawnObstacles());
+
+    }
+
+    IEnumerator SpawnObstacles()
+    {
+        while (true)
+        {
+            if (leadingPiece == null)
+            {
+                //Do nothing this turn
+                yield return null;
+                continue;
+            }
+            var lanes = leadingPiece.GetLanes();
+            int randomLaneIndex = Random.Range(0, lanes.Length);
+            Transform chosenLane = lanes[randomLaneIndex];
+
+            Instantiate(car, chosenLane.position, Quaternion.identity);
+            yield return new WaitForSeconds(car.SpawnDelay);
+        }
     }
 
     public void Update()
