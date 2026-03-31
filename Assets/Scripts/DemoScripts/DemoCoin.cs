@@ -5,12 +5,12 @@ public class DemoCoin : MonoBehaviour
 
     [SerializeField] Transform coinObject;
 
-    private LevelManager levelManager;
+    private DemoLevelManager levelManager;
 
     private void Awake()
     {
         //Find the level manager in the level
-        levelManager = FindFirstObjectByType<LevelManager>();
+        levelManager = FindFirstObjectByType<DemoLevelManager>();
     }
 
     private void Update()

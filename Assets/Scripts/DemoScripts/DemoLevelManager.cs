@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class LevelManager : MonoBehaviour
+public class DemoLevelManager : MonoBehaviour
 {
     // Get access to the game manager
     [SerializeField] GameManagerSO gameManager;

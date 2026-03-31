@@ -165,10 +165,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoadSpawner
   spawnPoint: {fileID: 1625142863}
-  roadPiece: {fileID: 3560764082636036803, guid: dadd0d0429c5a5e4eba8d2c7d34b7f04, type: 3}
+  roadPieces:
+  - {fileID: 3343391913636967944, guid: dadd0d0429c5a5e4eba8d2c7d34b7f04, type: 3}
+  - {fileID: 8635905186331785796, guid: 5f1e9e2767df4a747b9bb694ae1a80ce, type: 3}
   building: {fileID: 190849982555409179, guid: 4ba5cd594b80a21409f3bc7e1c722ddb, type: 3}
   tree: {fileID: 5016873034348029657, guid: d7e7e9b662eac034a87d215a0480c264, type: 3}
-  car: {fileID: 3013378158067793440, guid: 4dfc69355e5a70449936f17d93f82fd4, type: 3}
+  obstacles:
+  - {fileID: 1204123879369068660, guid: 860cf3eb74f37ca4dbac34c362053f0e, type: 3}
+  - {fileID: 3013378158067793440, guid: 4dfc69355e5a70449936f17d93f82fd4, type: 3}
 --- !u!1 &192210167
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,7 +354,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.16960308, y: -0, z: -0, w: 0.9855125}
-  m_LocalPosition: {x: 0, y: 2.048, z: -2.774}
+  m_LocalPosition: {x: -0.58, y: 2.62, z: -4.37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -813,6 +817,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 113820589}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1662693287
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1662693288}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1662693288
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1662693287}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.62471, y: 0, z: 0.59158}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -824,3 +859,4 @@ SceneRoots:
   - {fileID: 113820589}
   - {fileID: 413561890}
   - {fileID: 192210170}
+  - {fileID: 1662693288}

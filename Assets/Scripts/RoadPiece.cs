@@ -3,7 +3,7 @@ using UnityEngine;
 public class RoadPiece : MonoBehaviour
 {
     [SerializeField] Vector3 direction;
-    [SerializeField] float moveSpeed = 5f;
+    
 
     public Transform StartPos;
     public Transform EndPos;
@@ -12,11 +12,18 @@ public class RoadPiece : MonoBehaviour
     [SerializeField] Transform[] treeSpawnPoints;
     [SerializeField] Transform[] lanes;
 
+    LevelManager levelmanager;
+
+    private void Awake()
+    {
+        levelmanager = FindAnyObjectByType<LevelManager>();
+    }
+
     //Moves road towards the player
     private void FixedUpdate()
     {
         //transform.Translate(direction * MoveSpeed * Time.deltaTime);
-        transform.position += direction * moveSpeed * Time.fixedDeltaTime;
+        transform.position += levelmanager.GetSpeed() * Time.fixedDeltaTime * direction;
     }
 
     public Transform[] GetBuildingSpawnPoint()

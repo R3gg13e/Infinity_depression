@@ -2,24 +2,16 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    public float Speed
-    {
-        get { return speed; }
-        set { speed = value;}
-    }
+    LevelManager levelmanager;
 
-    public float SpawnDelay
+    private void Awake()
     {
-        get { return spawnDelay; }
-        set { spawnDelay = value; }
+        levelmanager = FindFirstObjectByType<LevelManager>();
     }
-
-    [SerializeField] float speed = 5f;
-    [SerializeField] float spawnDelay = 5f;
 
     private void FixedUpdate()
     {
-        transform.position += Vector3.back * speed * Time.fixedDeltaTime;
+        transform.position += Vector3.back * levelmanager.GetSpeed() * Time.fixedDeltaTime;
     }
 
     //public float GetSpeed()

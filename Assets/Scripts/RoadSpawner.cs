@@ -5,21 +5,22 @@ public class RoadSpawner : MonoBehaviour
 {
 
     [SerializeField] Transform spawnPoint;
-    [SerializeField] RoadPiece roadPiece;
+    [SerializeField] RoadPiece[] roadPieces;
+    private int previousRoadPieceIdx;
     [SerializeField] GameObject building;
     [SerializeField] GameObject tree;
-    [SerializeField] Obstacle car;
+    [SerializeField] Obstacle[] obstacles;
    
     RoadPiece leadingPiece; // Remember the last piece created
 
     private void Start()
     {
         leadingPiece = SpawnStartAt(spawnPoint.position);
-        //RoadPiece backPiece = leadingPiece;
-        //for (int i=0; i<8; i++)
-        //{
-        //    backPiece = SpawnEndAt(backPiece.StartPos.position);
-        //}
+        RoadPiece backPiece = leadingPiece;
+        for (int i = 0; i < 8; i++)
+        {
+            backPiece = SpawnEndAt(backPiece.StartPos.position);
+        }
 
         StartCoroutine(SpawnObstacles());
 
@@ -35,12 +36,19 @@ public class RoadSpawner : MonoBehaviour
                 yield return null;
                 continue;
             }
+            //Choose random lane
             var lanes = leadingPiece.GetLanes();
             int randomLaneIndex = Random.Range(0, lanes.Length);
             Transform chosenLane = lanes[randomLaneIndex];
 
-            Instantiate(car, chosenLane.position, Quaternion.identity);
-            yield return new WaitForSeconds(car.SpawnDelay);
+            //Choose random obstacle
+            int obstacleIdx = Random.Range(0, obstacles.Length);
+
+            //Instatiate an obstacle out of the array usinf the index
+            Instantiate(obstacles[obstacleIdx], chosenLane.position, Quaternion.identity);
+
+            //Wait until respawn
+            yield return new WaitForSeconds(2f);
         }
     }
 
@@ -56,13 +64,40 @@ public class RoadSpawner : MonoBehaviour
     }
     RoadPiece SpawnStartAt(Vector3 startPosition)
     {
-        RoadPiece newPiece = Instantiate(roadPiece, startPosition, spawnPoint.rotation);
+        int roadPieceIdx = 0; //Assume we ude index zero but...
+        //If we previously already had a clean bit of road
+        //And we have to wait for 3 sec
+        if (previousRoadPieceIdx == 0 && Time.time>3f)
+        {
+            //Then choose a random road piece
+            roadPieceIdx = Random.Range(0, roadPieces.Length);
+            
+        }
+        //Update previous piece index
+        previousRoadPieceIdx = roadPieceIdx;
+
+        
+
+        RoadPiece newPiece = Instantiate(roadPieces[roadPieceIdx], startPosition, spawnPoint.rotation);
         newPiece.transform.position += startPosition - newPiece.StartPos.position;
         return newPiece;
     }
     RoadPiece SpawnEndAt(Vector3 endPosition)
     {
-        RoadPiece newPiece = Instantiate(roadPiece, endPosition, spawnPoint.rotation);
+        int roadPieceIdx = Random.Range(0, roadPieces.Length);
+
+        roadPieceIdx = 0; //Assume we ude index zero but...
+        //If we previously already had a clean bit of road
+        if (previousRoadPieceIdx == 0 && Time.time>3f)
+        {
+            //Then choose a random road piece
+            roadPieceIdx = Random.Range(0, roadPieces.Length);
+            
+        }
+        
+        previousRoadPieceIdx = roadPieceIdx;
+
+        RoadPiece newPiece = Instantiate(roadPieces[roadPieceIdx], endPosition, spawnPoint.rotation);
         newPiece.transform.position += endPosition - newPiece.EndPos.position;
         return newPiece;
     }
