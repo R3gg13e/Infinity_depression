@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Managers/GameManager", fileName = "GameManager")]
-public class GameManagerSO : ScriptableObject
+public class DemoGameManagerSO : ScriptableObject
 {
     public int collectedCoins;
 

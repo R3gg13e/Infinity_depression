@@ -6,6 +6,11 @@ public class LevelManager : MonoBehaviour
 {
     [SerializeField] float currentGameSpeed = 5f;
 
+    //public property
+    public GameState CurrentGameState => currentGameState;
+    //hidden private field
+    [SerializeField] GameState currentGameState;
+
     private void Start()
     {
         StartCoroutine(GraduallySpeedUpTime());

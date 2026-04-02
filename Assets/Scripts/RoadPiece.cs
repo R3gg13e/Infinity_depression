@@ -22,8 +22,13 @@ public class RoadPiece : MonoBehaviour
     //Moves road towards the player
     private void FixedUpdate()
     {
+        //If the current gamestate is not running then return out of there
+        if (levelmanager.CurrentGameState != GameState.Running)
+            return;
+        
+
         //transform.Translate(direction * MoveSpeed * Time.deltaTime);
-        transform.position += levelmanager.GetSpeed() * Time.fixedDeltaTime * direction;
+        transform.position += direction* levelmanager.GetSpeed() * Time.fixedDeltaTime;
     }
 
     public Transform[] GetBuildingSpawnPoint()

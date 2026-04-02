@@ -13,8 +13,16 @@ public class RoadSpawner : MonoBehaviour
    
     RoadPiece leadingPiece; // Remember the last piece created
 
+    LevelManager levelmanager;
+
+    private void Awake()
+    {
+        levelmanager = FindFirstObjectByType<LevelManager>();
+    }
+
     private void Start()
     {
+
         leadingPiece = SpawnStartAt(spawnPoint.position);
         RoadPiece backPiece = leadingPiece;
         for (int i = 0; i < 8; i++)
@@ -28,7 +36,8 @@ public class RoadSpawner : MonoBehaviour
 
     IEnumerator SpawnObstacles()
     {
-        while (true)
+        //Only spawn obstagles WHILE the current game state IS set on running
+        while (levelmanager.CurrentGameState==GameState.Running)
         {
             if (leadingPiece == null)
             {
@@ -39,7 +48,8 @@ public class RoadSpawner : MonoBehaviour
             //Choose random lane
             var lanes = leadingPiece.GetLanes();
             int randomLaneIndex = Random.Range(0, lanes.Length);
-            Transform chosenLane = lanes[randomLaneIndex];
+            Transform chosenLane = leadingPiece.GetLanes()[randomLaneIndex];
+                //lanes[randomLaneIndex];
 
             //Choose random obstacle
             int obstacleIdx = Random.Range(0, obstacles.Length);
@@ -54,6 +64,9 @@ public class RoadSpawner : MonoBehaviour
 
     public void Update()
     {
+        if (levelmanager.CurrentGameState != GameState.Running)
+            return;
+
         if (leadingPiece == null) return;
         if (leadingPiece.EndPos.position.z <= spawnPoint.position.z)
         {

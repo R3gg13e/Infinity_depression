@@ -11,6 +11,9 @@ public class Obstacle : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (levelmanager.CurrentGameState != GameState.Running)
+            return;
+
         transform.position += Vector3.back * levelmanager.GetSpeed() * Time.fixedDeltaTime;
     }
 

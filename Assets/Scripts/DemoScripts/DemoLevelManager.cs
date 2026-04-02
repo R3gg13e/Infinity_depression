@@ -3,12 +3,12 @@ using UnityEngine;
 public class DemoLevelManager : MonoBehaviour
 {
     // Get access to the game manager
-    [SerializeField] GameManagerSO gameManager;
-    private UIManager uiManager;
+    [SerializeField] DemoGameManagerSO gameManager;
+    private DemoUIManager demouiManager;
 
     private void Awake()
     {
-        uiManager = FindFirstObjectByType<UIManager>();
+        demouiManager = FindFirstObjectByType<DemoUIManager>();
     }
 
     private void Start()
@@ -21,6 +21,6 @@ public class DemoLevelManager : MonoBehaviour
     {
         //Player has collected a coin, let's inform game manager and the ui manager
         gameManager.collectedCoins += 1;
-        uiManager.UpdateCoinsText(gameManager.collectedCoins);
+        demouiManager.UpdateCoinsText(gameManager.collectedCoins);
     }
 }
