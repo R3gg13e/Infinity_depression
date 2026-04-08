@@ -573,7 +573,7 @@ GameObject:
   - component: {fileID: 3013378158067793440}
   m_Layer: 0
   m_Name: Car
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -618,8 +618,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.9707997, y: 2.9937825, z: 4.233882}
-  m_Center: {x: -0.060686946, y: -0.18867636, z: -0.01901865}
+  m_Size: {x: 2.9707997, y: 3.2147334, z: 4.233882}
+  m_Center: {x: -0.06068697, y: 1.8675624, z: -0.019018587}
 --- !u!114 &3013378158067793440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -632,8 +632,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 057c58162fc55cd40bb4062f327e92a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
-  speed: 5
-  spawnDelay: 5
 --- !u!1 &6840372429472043615
 GameObject:
   m_ObjectHideFlags: 0

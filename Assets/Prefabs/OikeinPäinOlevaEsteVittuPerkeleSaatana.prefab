@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 242e156c91e555949986df4a4ae7b51b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.0385199
+      value: -2.06
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 242e156c91e555949986df4a4ae7b51b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -116,6 +116,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "OikeinP\xE4inOlevaEsteVittuPerkeleSaatana"
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 242e156c91e555949986df4a4ae7b51b, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 2786534777698132407, guid: 242e156c91e555949986df4a4ae7b51b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -171,8 +175,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.1801043, y: 2.3444102, z: 0.6690123}
-  m_Center: {x: -2.884735, y: 1.116676, z: 0.32575095}
+  m_Size: {x: 2.3574266, y: 2.3444102, z: 0.52080894}
+  m_Center: {x: -0.18017197, y: 1.116676, z: -0.020439982}
 --- !u!114 &1204123879369068660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,5 +189,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 057c58162fc55cd40bb4062f327e92a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle
-  speed: 5
-  spawnDelay: 5

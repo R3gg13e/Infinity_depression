@@ -37,4 +37,10 @@ public class LevelManager : MonoBehaviour
     {
         throw new NotImplementedException();
     }
+
+    public void DeclareGameOver()
+    {
+        currentGameState = GameState.Gameover;
+    }
+
 }

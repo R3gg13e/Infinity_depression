@@ -167,8 +167,8 @@ MonoBehaviour:
   spawnPoint: {fileID: 1625142863}
   roadPieces:
   - {fileID: 3343391913636967944, guid: dadd0d0429c5a5e4eba8d2c7d34b7f04, type: 3}
-  - {fileID: 8635905186331785796, guid: 5f1e9e2767df4a747b9bb694ae1a80ce, type: 3}
-  building: {fileID: 190849982555409179, guid: 4ba5cd594b80a21409f3bc7e1c722ddb, type: 3}
+  - {fileID: 4764028939317299435, guid: 98da092fc75f78f4f92996f29d8c7973, type: 3}
+  building: {fileID: 6404340766498064718, guid: c2f0cf2d2eaf57348afa4813860330c0, type: 3}
   tree: {fileID: 5016873034348029657, guid: d7e7e9b662eac034a87d215a0480c264, type: 3}
   obstacles:
   - {fileID: 1204123879369068660, guid: 860cf3eb74f37ca4dbac34c362053f0e, type: 3}
@@ -696,6 +696,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fa608cbb2d75c4841bc0cbc462829035, type: 3}
       insertIndex: -1
       addedObject: {fileID: 802260774}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fa608cbb2d75c4841bc0cbc462829035, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 802260776}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fa608cbb2d75c4841bc0cbc462829035, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 802260777}
   m_SourcePrefab: {fileID: 100100000, guid: fa608cbb2d75c4841bc0cbc462829035, type: 3}
 --- !u!1 &802260771 stripped
 GameObject:
@@ -737,6 +743,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   MovementSpeed: 5
+--- !u!136 &802260776
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802260771}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.4
+  m_Height: 1.8191293
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.85031945, z: 0}
+--- !u!54 &802260777
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802260771}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -812,7 +868,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.11, y: 0, z: 12.5}
-  m_LocalScale: {x: 1, y: 1, z: -2.762696}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 113820589}

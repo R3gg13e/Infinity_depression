@@ -7,6 +7,9 @@ public class PlayerController : MonoBehaviour
     Animator animator;
     LevelManager levelManager;
 
+    //Are we jumping
+    [SerializeField] bool isJumping;
+
     private void Awake()
 
     {
@@ -15,6 +18,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
 
         animator.SetBool("IsRunning", true);
+        isJumping = false;
     }
 
     private void Update()
@@ -31,11 +35,37 @@ public class PlayerController : MonoBehaviour
             //Player jump animation
             if (Input.GetKeyDown(KeyCode.Space))
             {
-            animator.SetTrigger("Jump");
+               animator.SetTrigger("Jump");
+               isJumping = true;
             }
         }
     }
 
+    public void OnLanding()
+    {
+        isJumping = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Obstacle"))
+        {
+            //stop running
+            animator.SetBool("IsRunning", false);
+
+            //let the game manager know that it's game over
+            levelManager.DeclareGameOver();
+        }
+
+        if (other.gameObject.CompareTag("DamagedRoad") && !isJumping) 
+        {
+            //stop running
+            animator.SetBool("IsRunning", false);
+
+            //let the game manager know that it's game over
+            levelManager.DeclareGameOver();
+        }
+    }
 
 
 
