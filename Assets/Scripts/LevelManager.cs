@@ -5,15 +5,28 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] float currentGameSpeed = 5f;
+    private InGameUI inGameUi;
+    public float GameTime { get; set; }
 
     //public property
     public GameState CurrentGameState => currentGameState;
     //hidden private field
     [SerializeField] GameState currentGameState;
 
+    private void Awake()
+    {
+        inGameUi = FindFirstObjectByType<InGameUI>();
+    }
+
     private void Start()
     {
         StartCoroutine(GraduallySpeedUpTime());
+    }
+
+    private void Update()
+    {
+        // increment game time
+        GameTime += Time.deltaTime;
     }
 
     IEnumerator GraduallySpeedUpTime()
@@ -41,6 +54,7 @@ public class LevelManager : MonoBehaviour
     public void DeclareGameOver()
     {
         currentGameState = GameState.Gameover;
+        inGameUi.DisplayGameOverScreen();
     }
 
 }
